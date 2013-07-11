@@ -36,16 +36,12 @@ public class Question {
             if (leftSrc.getValue() < rightSrc.getValue()) {
                 newArray.add(i, leftSrc.getValue());
 
-//                if (leftSrc.getIndex() > rightSrc.getIndex())
-//                    inversionsCount++;
-
                 leftSrc.goNext();
             }
             else {
                 newArray.add(i, rightSrc.getValue());
 
-//                if (leftSrc.getIndex() < rightSrc.getIndex())
-                    inversionsCount++;
+                inversionsCount += leftSrc.getRemains();
 
                 rightSrc.goNext();
             }
