@@ -1,7 +1,6 @@
-package homeworks.hw1;
+package homeworks.week1;
 
 import java.io.*;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +8,7 @@ public class Question {
     private final long answer;
 
     public Question(List<Integer> array) {
-        IntListHolder holder = sort(array);
+        IntValuesHolder holder = sort(array);
         answer = holder.getInversionsCount();
     }
 
@@ -17,54 +16,57 @@ public class Question {
         return answer;
     }
 
-    private IntListHolder sort(List<Integer> source) {
+    static IntValuesHolder sort(List<Integer> source) {
         if (source.size() == 1)
-            return new IntListHolder(source);
+            return new IntValuesHolder(source);
 
-        IntListHolder left = sort(source.subList(0, source.size()/2));
-        IntListHolder right = sort(source.subList(source.size()/2, source.size()));
+        IntValuesHolder left = sort(source.subList(0, source.size()/2));
+        IntValuesHolder right = sort(source.subList(source.size()/2, source.size()));
         return merge(left, right);
     }
 
-    static IntListHolder merge(IntListHolder left, IntListHolder right) {
+    static IntValuesHolder merge(IntValuesHolder left, IntValuesHolder right) {
         int newSize = left.getList().size() + right.getList().size();
         List<Integer> newArray = new ArrayList<Integer>(newSize);
 
-        IntListSource leftSrc = new IntListSource(left.getList());
-        IntListSource rightSrc = new IntListSource(right.getList());
+        IntValuesArray leftSrc = new IntValuesArray(left.getList());
+        IntValuesArray rightSrc = new IntValuesArray(right.getList());
 
         int inversionsCount = 0;
         for (int i = 0; i < newSize; i++) {
             if (leftSrc.getValue() < rightSrc.getValue()) {
                 newArray.add(i, leftSrc.getValue());
 
-                leftSrc.goNext();
+                leftSrc.goToNextValue();
             }
             else {
                 newArray.add(i, rightSrc.getValue());
 
-                inversionsCount += leftSrc.getRemains();
+                inversionsCount += leftSrc.getRemainValuesCount();
 
-                rightSrc.goNext();
+                rightSrc.goToNextValue();
             }
         }
 
-        IntListHolder holder = new IntListHolder(newArray);
+        IntValuesHolder holder = new IntValuesHolder(newArray);
         holder.setInversionsCount(left.getInversionsCount() + right.getInversionsCount() + inversionsCount);
         return holder;
     }
 
-    // final correct answer is 2407905288
     public static void main(String... args) throws IOException {
         InputStream is = Question.class.getResourceAsStream("IntegerArray.txt");
-        DataInputStream in = new DataInputStream(is);
-        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
 
-        List<Integer> array = new ArrayList<Integer>(100000);
-        for (int i = 0; i< 100000; i++) {
+        List<Integer> array = new ArrayList<Integer>();
+        int count = 0;
+        while (true) {
             String strLine = br.readLine();
+            if (strLine == null)
+                break;
             array.add(Integer.parseInt(strLine));
-        }
+            count++;
+        };
+        System.out.println("Readed " + count + " numbers...");
 
         Question q = new Question(array);
         System.out.println("Inversions count is " + q.getAnswer());

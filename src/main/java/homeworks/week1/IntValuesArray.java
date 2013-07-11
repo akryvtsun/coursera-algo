@@ -1,14 +1,14 @@
-package homeworks.hw1;
+package homeworks.week1;
 
 import java.util.List;
 
-class IntListSource {
+class IntValuesArray {
     private final List<Integer> list;
 
     private int index = 0;
     private int value;
 
-    IntListSource(List<Integer> list) {
+    IntValuesArray(List<Integer> list) {
         if (list == null)
             throw new NullPointerException("Input list can't be null");
 
@@ -20,15 +20,13 @@ class IntListSource {
         return value;
     }
 
-    int getIndex() {
-        return index;
+    int getRemainValuesCount() {
+        return index < list.size()
+                ? list.size() - index
+                : 0;
     }
 
-    int getRemains() {
-        return index < list.size()? list.size() - index: 0;
-    }
-
-    void goNext() {
+    void goToNextValue() {
         value = getNextValue(++index);
     }
 

@@ -1,12 +1,12 @@
-package homeworks.hw1;
+package homeworks.week1;
 
 import java.util.List;
 
-class IntListHolder {
+class IntValuesHolder {
     private final List<Integer> list;
     private long inversionsCount = 0;
 
-    IntListHolder(List<Integer> list) {
+    IntValuesHolder(List<Integer> list) {
         this.list = list;
     }
 
