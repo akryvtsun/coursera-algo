@@ -4,7 +4,7 @@ import java.util.List;
 
 class IntListHolder {
     private final List<Integer> list;
-    private int inversionsCount = 0;
+    private long inversionsCount = 0;
 
     IntListHolder(List<Integer> list) {
         this.list = list;
@@ -14,11 +14,11 @@ class IntListHolder {
         return list;
     }
 
-    int getInversionsCount() {
+    long getInversionsCount() {
         return inversionsCount;
     }
 
-    void setInversionsCount(int inversionsCount) {
+    void setInversionsCount(long inversionsCount) {
         this.inversionsCount = inversionsCount;
     }
 }

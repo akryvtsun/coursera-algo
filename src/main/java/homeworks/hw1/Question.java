@@ -1,17 +1,19 @@
 package homeworks.hw1;
 
+import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Question {
-    private final int answer;
+    private final long answer;
 
     public Question(List<Integer> array) {
         IntListHolder holder = sort(array);
         answer = holder.getInversionsCount();
     }
 
-    public int getAnswer() {
+    public long getAnswer() {
         return answer;
     }
 
@@ -52,7 +54,19 @@ public class Question {
         return holder;
     }
 
-    public static void main(String... args) {
-        System.out.println( "Hello World!" );
+    // final correct answer is 2407905288
+    public static void main(String... args) throws IOException {
+        InputStream is = Question.class.getResourceAsStream("IntegerArray.txt");
+        DataInputStream in = new DataInputStream(is);
+        BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+        List<Integer> array = new ArrayList<Integer>(100000);
+        for (int i = 0; i< 100000; i++) {
+            String strLine = br.readLine();
+            array.add(Integer.parseInt(strLine));
+        }
+
+        Question q = new Question(array);
+        System.out.println("Inversions count is " + q.getAnswer());
     }
 }
