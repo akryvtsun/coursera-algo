@@ -6,6 +6,13 @@ public class Question {
 
     }
 
+    /**
+     *
+     * @param array
+     * @param left  index for left start element in array
+     * @param right  index for right finish element in array
+     * @return  index of array pivot element
+     */
     static int partition(int[] array, int left, int right) {
         final int pivot = array[left];
 
@@ -21,17 +28,15 @@ public class Question {
         return i-1;
     }
 
-    static void quickSort(int[] array) {
-//        for (int i = 1; i <= 8; i++) {
-//            array[i-1] = i;
-//        }
-
-        if (array.length == 1)
+    static void quickSort(int[] array, int left, int right) {
+        if (left == right)
             return;
 
-        int pivotIdx = partition(array, 0, array.length);
-        partition(array, 0, pivotIdx);
-        partition(array, pivotIdx+1, array.length);
+        int pivotIdx = partition(array, left, right+1);
+        if (left < pivotIdx)
+            quickSort(array, left, pivotIdx-1);
+        if (pivotIdx < right)
+            quickSort(array, pivotIdx+1, right);
     }
 
     long getAnswer() {
