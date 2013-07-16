@@ -1,6 +1,5 @@
 package homeworks.week1;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,24 +50,5 @@ public class Question {
         IntValuesHolder holder = new IntValuesHolder(newArray);
         holder.setInversionsCount(left.getInversionsCount() + right.getInversionsCount() + inversionsCount);
         return holder;
-    }
-
-    public static void main(String... args) throws IOException {
-        InputStream is = Question.class.getResourceAsStream("IntegerArray.txt");
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-
-        List<Integer> array = new ArrayList<Integer>();
-        int count = 0;
-        while (true) {
-            String strLine = br.readLine();
-            if (strLine == null)
-                break;
-            array.add(Integer.parseInt(strLine));
-            count++;
-        };
-        System.out.println("Readed " + count + " numbers...");
-
-        Question q = new Question(array);
-        System.out.println("Inversions count is " + q.getAnswer());
     }
 }

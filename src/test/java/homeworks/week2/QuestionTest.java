@@ -14,7 +14,6 @@ import static org.junit.Assert.assertEquals;
  *
  * todo test pivot element selection
  * todo test real data loader
- * todo how to make obtaining of real answer as part of junit unfrastructure
  *
  * todo make real data loader common for all weeks???
  *

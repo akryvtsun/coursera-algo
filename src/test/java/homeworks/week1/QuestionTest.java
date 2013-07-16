@@ -2,10 +2,15 @@ package homeworks.week1;
 
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * @see <a href="https://class.coursera.org/algo-004/forum/thread?thread_id=52">Test Cases for Programming Assignment #1</a>
@@ -76,5 +81,25 @@ public class QuestionTest {
     public void testQuestion10() {
         Question q = new Question(Arrays.asList(89, 88, 87, 86, 85, 81, 82, 84, 83, 80, 79, 78, 77, 76, 75, 95, 94, 93, 92, 91));
         assertEquals(110, q.getAnswer());
+    }
+
+    @Test
+    public void testMainQuestion() throws IOException {
+        InputStream is = Question.class.getResourceAsStream("IntegerArray.txt");
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+
+        List<Integer> array = new ArrayList<Integer>();
+        int count = 0;
+        while (true) {
+            String strLine = br.readLine();
+            if (strLine == null)
+                break;
+            array.add(Integer.parseInt(strLine));
+            count++;
+        };
+        assertEquals(100000, count);
+
+        Question q = new Question(array);
+        assertEquals(2407905288L, q.getAnswer());
     }
 }
