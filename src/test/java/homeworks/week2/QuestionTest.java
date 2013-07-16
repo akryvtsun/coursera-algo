@@ -2,14 +2,10 @@ package homeworks.week2;
 
 import org.junit.Test;
 
-import java.util.Arrays;
-
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 /**
- * todo test partitioning procedure
- * todo user triangulation for test partitioning on another data set
  * todo test QuickSort procedure
  *
  * todo test pivot element selection
@@ -22,17 +18,10 @@ import static org.junit.Assert.assertEquals;
 public class QuestionTest {
 
     @Test
-    public void testPartition() {
-        int[] src = new int[] {3,1};
-        Question.partition(src, 0, 1);
-        assertArrayEquals(new int[] {1,3}, Arrays.copyOfRange(src, 0, 2));
-    }
-
-    @Test
-    public void testPartition2() {
+    public void testQuickSortFromLecture() {
         int[] src = new int[] {3,8,2,5,1,4,7,6};
-        Question.partition(src, 0, 7);
-        assertArrayEquals(new int[] {1,2,3,5,8,4,7,6}, Arrays.copyOfRange(src, 0, 8));
+        Question.quickSort(src);
+        assertArrayEquals(new int[] {1,2,3,4,5,6,7,8}, src);
     }
 
     @Test
