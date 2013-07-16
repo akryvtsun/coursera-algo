@@ -6,7 +6,7 @@ public class Question {
 
     }
 
-    static void partition(int[] array, int left, int right) {
+    static int partition(int[] array, int left, int right) {
         final int pivot = array[left];
 
         int i = left+1;
@@ -18,12 +18,20 @@ public class Question {
         }
 
         swap(array, left, i-1);
+        return i-1;
     }
 
     static void quickSort(int[] array) {
-        for (int i = 1; i <= 8; i++) {
-            array[i-1] = i;
-        }
+//        for (int i = 1; i <= 8; i++) {
+//            array[i-1] = i;
+//        }
+
+        if (array.length == 1)
+            return;
+
+        int pivotIdx = partition(array, 0, array.length);
+        partition(array, 0, pivotIdx);
+        partition(array, pivotIdx+1, array.length);
     }
 
     long getAnswer() {
