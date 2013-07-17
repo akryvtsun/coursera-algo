@@ -5,7 +5,7 @@ import org.junit.Test;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
-public class QuestionPartitionTest {
+public class PartitionTest {
     @Test
     public void testOneElementPartition() {
         int[] src = new int[] {1};
