@@ -99,6 +99,9 @@ public class QuestionTest {
         };
         assertEquals(100000, count);
 
+        br.close();
+        is.close();
+
         Question q = new Question(array);
         assertEquals(2407905288L, q.getAnswer());
     }
