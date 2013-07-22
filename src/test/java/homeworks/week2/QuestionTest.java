@@ -20,7 +20,7 @@ public class QuestionTest {
 
     @Test
     public void testQuestion() {
-        Question q = new Question(new int[] {5,4,3,2,1});
-        assertEquals(3, q.getAnswer());
+        Question q = new Question(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
+        assertEquals(25, q.getAnswer());
     }
 }

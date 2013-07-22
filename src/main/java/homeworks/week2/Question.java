@@ -1,9 +1,15 @@
 package homeworks.week2;
 
 public class Question {
+    private int[] array;
+    long count = 0;
 
     Question(int[] array) {
+        this.array = array;
+    }
 
+    int[] getArray() {
+        return array;
     }
 
     /**
@@ -28,19 +34,22 @@ public class Question {
         return i-1;
     }
 
-    static void quickSort(int[] array, int left, int right) {
+    void quickSort(int left, int right) {
         if (left == right)
             return;
 
         int pivotIdx = partition(array, left, right+1);
+        count += right - left;
+
         if (left < pivotIdx)
-            quickSort(array, left, pivotIdx-1);
+            quickSort(left, pivotIdx-1);
         if (pivotIdx < right)
-            quickSort(array, pivotIdx+1, right);
+            quickSort(pivotIdx+1, right);
     }
 
     long getAnswer() {
-        return 3;
+        quickSort(0, array.length-1);
+        return count;
     }
 
     private static void swap(int x[], int a, int b) {
