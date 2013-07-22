@@ -1,8 +1,9 @@
 package homeworks.week2;
 
-public class Question {
-    private int[] array;
-    long count = 0;
+abstract class Question {
+    private long count = 0;
+
+    int[] array;
 
     Question(int[] array) {
         this.array = array;
@@ -12,12 +13,15 @@ public class Question {
         return array;
     }
 
+    abstract void prepareFirstPivot(int left, int right);
+
     /**
      * @param left  index for left start element in array
      * @param right  index for right finish element in array
      * @return  index of array pivot element
      */
     int partition(int left, int right) {
+        prepareFirstPivot(left, right);
         final int pivot = array[left];
 
         int i = left+1;
@@ -50,7 +54,7 @@ public class Question {
         return count;
     }
 
-    private static void swap(int x[], int a, int b) {
+    static void swap(int x[], int a, int b) {
         int t = x[a];
         x[a] = x[b];
         x[b] = t;

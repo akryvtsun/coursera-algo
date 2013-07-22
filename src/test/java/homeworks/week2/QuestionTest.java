@@ -19,8 +19,20 @@ import static org.junit.Assert.assertEquals;
 public class QuestionTest {
 
     @Test
-    public void testQuestion() {
-        Question q = new Question(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
+    public void testQuestion1() {
+        Question q = new Question1(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
         assertEquals(25, q.getAnswer());
+    }
+
+    @Test
+    public void testQuestion2() {
+        Question q = new Question2(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
+        assertEquals(29, q.getAnswer());
+    }
+
+    @Test
+    public void testQuestion3() {
+        Question q = new Question3(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
+        assertEquals(21, q.getAnswer());
     }
 }

@@ -8,7 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class PartitionTest {
     @Test
     public void testOneElementPartition() {
-        Question q = new Question(new int[] {1});
+        Question q = new Question1(new int[] {1});
         int pivotIdx = q.partition(0, 1);
 
         assertEquals(0, pivotIdx);
@@ -17,7 +17,7 @@ public class PartitionTest {
 
     @Test
     public void testTwoElementPartition() {
-        Question q = new Question(new int[] {3,1});
+        Question q = new Question1(new int[] {3,1});
         int pivotIdx = q.partition(0, 2);
 
         assertEquals(1, pivotIdx);
@@ -26,7 +26,7 @@ public class PartitionTest {
 
     @Test
     public void testPartitionFromLecture() {
-        Question q = new Question(new int[] {3,8,2,5,1,4,7,6});
+        Question q = new Question1(new int[] {3,8,2,5,1,4,7,6});
         int pivotIdx = q.partition(0, 8);
 
         assertEquals(2, pivotIdx);
@@ -35,7 +35,7 @@ public class PartitionTest {
 
     @Test
     public void testInnerPartition() {
-        Question q = new Question(new int[] {4,3,2,1,0});
+        Question q = new Question1(new int[] {4,3,2,1,0});
         int pivotIdx = q.partition(1, 4);
 
         assertEquals(3, pivotIdx);
