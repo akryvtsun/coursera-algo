@@ -13,13 +13,11 @@ public class Question {
     }
 
     /**
-     *
-     * @param array
      * @param left  index for left start element in array
      * @param right  index for right finish element in array
      * @return  index of array pivot element
      */
-    static int partition(int[] array, int left, int right) {
+    int partition(int left, int right) {
         final int pivot = array[left];
 
         int i = left+1;
@@ -38,7 +36,7 @@ public class Question {
         if (left == right)
             return;
 
-        int pivotIdx = partition(array, left, right+1);
+        int pivotIdx = partition(left, right+1);
         count += right - left;
 
         if (left < pivotIdx)
