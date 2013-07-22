@@ -8,7 +8,7 @@ public class Question3 extends Question {
 
     @Override
     void prepareFirstPivot(int left, int right) {
-        int median = (right-1 - left)/2;
+        int median = left + (right-1 - left)/2;
         if ( (array[left] < array[median] && array[median] < array[right-1]) ||
             (array[right-1] < array[median] && array[median] < array[left])) {
             swap(array, left, median);
