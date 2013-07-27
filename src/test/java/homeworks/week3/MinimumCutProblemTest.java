@@ -1,13 +1,14 @@
 package homeworks.week3;
 
+import homeworks.Questionable;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class QuestionTest {
+public class MinimumCutProblemTest {
     @Test
     public void testQuestion() {
-        Question q = new Question();
+        Questionable q = new MinimumCutProblem();
         assertEquals(2, q.getAnswer());
     }
 }
