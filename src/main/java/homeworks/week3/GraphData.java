@@ -3,6 +3,9 @@ package homeworks.week3;
 import java.util.*;
 
 public class GraphData implements Cloneable {
+
+    private static Random RND = new Random();
+
     private final List<Integer> nodes;
     private final Map<Integer, List<Integer>> edges;
 
@@ -17,7 +20,7 @@ public class GraphData implements Cloneable {
             int node = data[i][0];
             nodes.add(node);
 
-            List<Integer> eList = new LinkedList<Integer>();
+            List<Integer> eList = new ArrayList<Integer>();
             for (int j = 1; j < data[i].length; j++) {
                 eList.add(data[i][j]);
             }
@@ -30,22 +33,27 @@ public class GraphData implements Cloneable {
         for (Integer node: graph.nodes) {
             nodes.add(node);
             List<Integer> eList = graph.edges.get(node);
-            edges.put(node, new LinkedList(eList));
+            edges.put(node, new ArrayList(eList));
         }
     }
 
-    int getFirstNode(int firstNodeIdx) {
-        return nodes.get(firstNodeIdx);
+    int getFirstNode() {
+        int firstNodeIdx = RND.nextInt(nodes.size());
+        return getNode(firstNodeIdx);
     }
 
-    // todo MAKE SELECTION RANDOM TOO!!!
+    Integer getNode(int nodeIdx) {
+        return nodes.get(nodeIdx);
+    }
+
     int getSecondNode(int firstNode) {
-        return edges.get(firstNode).get(0);
+        List<Integer> eList = edges.get(firstNode);
+        int secondNodeIdx = RND.nextInt(eList.size());
+        return eList.get(secondNodeIdx);
     }
 
-    // todo rename method
     // todo make backward links in correct way
-    void changeFirstToSecond(int firstNode, int secondNode) {
+    void mergeFirstToSecond(int firstNode, int secondNode) {
         for (Integer node: edges.get(firstNode)) {
             List<Integer> otherNode = edges.get(node);
             for (int i = 0; i < otherNode.size(); i++) {
@@ -75,6 +83,6 @@ public class GraphData implements Cloneable {
     }
 
     int getNotesCount() {
-        return edges.size();
+        return nodes.size();
     }
 }
