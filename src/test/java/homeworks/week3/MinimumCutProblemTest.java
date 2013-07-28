@@ -18,7 +18,7 @@ public class MinimumCutProblemTest {
     }
 
     @Test
-    public void testForumQuestion() {
+    public void testForumQuestion1() {
         int[][] data = {
             {1, 2, 3, 4, 7},
             {2, 1, 3, 4},
@@ -32,5 +32,22 @@ public class MinimumCutProblemTest {
         GraphData graph = new GraphData(data);
         Questionable q = new MinimumCutProblem(graph);
         assertEquals(2, q.getAnswer());
+    }
+
+    @Test
+    public void testForumQuestion2() {
+        int[][] data = {
+            {1, 2, 3, 4},
+            {2, 1, 3, 4},
+            {3, 1, 2, 4},
+            {4, 1, 2, 3, 5},
+            {5, 4, 6, 7, 8},
+            {6, 5, 7, 8},
+            {7, 5, 6, 8},
+            {8, 5, 6, 7}
+        };
+        GraphData graph = new GraphData(data);
+        Questionable q = new MinimumCutProblem(graph);
+        assertEquals(1, q.getAnswer());
     }
 }
