@@ -1,5 +1,6 @@
 package homeworks.week2;
 
+import homeworks.Questionable;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,19 +36,19 @@ public class QuestionQuickSortTest {
 
     @Test
     public void testQuestion1() {
-        Question q = new Question1(array);
-        assertEquals(162085, q.getAnswer());
+        Questionable<Long> q = new Question1(array);
+        assertEquals(162085, (long)q.getAnswer());
     }
 
     @Test
     public void testQuestion2() {
-        Question q = new Question2(array);
-        assertEquals(164123, q.getAnswer());
+        Questionable<Long> q = new Question2(array);
+        assertEquals(164123, (long)q.getAnswer());
     }
 
     @Test
     public void testQuestion3() {
-        Question q = new Question3(array);
-        assertEquals(138382, q.getAnswer());
+        Questionable<Long> q = new Question3(array);
+        assertEquals(138382, (long)q.getAnswer());
     }
 }

@@ -1,5 +1,6 @@
 package homeworks.week2;
 
+import homeworks.Questionable;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -39,19 +40,19 @@ public class Question100Test {
 
     @Test
     public void testQuestion1() {
-        Question q = new Question1(array);
-        assertEquals(615, q.getAnswer());
+        Questionable<Long> q = new Question1(array);
+        assertEquals(615, (long)q.getAnswer());
     }
 
     @Test
     public void testQuestion2() {
-        Question q = new Question2(array);
-        assertEquals(587, q.getAnswer());
+        Questionable<Long> q = new Question2(array);
+        assertEquals(587, (long)q.getAnswer());
     }
 
     @Test
     public void testQuestion3() {
-        Question q = new Question3(array);
-        assertEquals(518, q.getAnswer());
+        Questionable<Long> q = new Question3(array);
+        assertEquals(518, (long)q.getAnswer());
     }
 }

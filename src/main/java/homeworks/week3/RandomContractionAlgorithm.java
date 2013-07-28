@@ -3,7 +3,7 @@ package homeworks.week3;
 
 import homeworks.Questionable;
 
-public class RandomContractionAlgorithm implements Questionable {
+public class RandomContractionAlgorithm implements Questionable<Integer> {
 
     private GraphData graph;
 
@@ -24,7 +24,7 @@ public class RandomContractionAlgorithm implements Questionable {
     }
 
     @Override
-    public int getAnswer() {
+    public Integer getAnswer() {
         int first = graph.getNode(0);
         return graph.getEdgesCount(first);
     }

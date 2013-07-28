@@ -2,7 +2,7 @@ package homeworks.week3;
 
 import homeworks.Questionable;
 
-public class MinimumCutProblem implements Questionable {
+public class MinimumCutProblem implements Questionable<Integer> {
     private final GraphData graph;
     private final int runsCount;
     private int minCutsAnswer = Integer.MAX_VALUE;
@@ -25,10 +25,10 @@ public class MinimumCutProblem implements Questionable {
     }
 
     @Override
-    public int getAnswer() {
+    public Integer getAnswer() {
         for (int i = 0; i < runsCount; i++) {
             GraphData newGraph = new GraphData(graph);
-            Questionable q = new RandomContractionAlgorithm(newGraph);
+            Questionable<Integer> q = new RandomContractionAlgorithm(newGraph);
             int answer = q.getAnswer();
             if (answer < minCutsAnswer)
                 minCutsAnswer = answer;

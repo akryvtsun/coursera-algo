@@ -1,9 +1,11 @@
 package homeworks.week1;
 
+import homeworks.Questionable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Question {
+public class Question implements Questionable<Long> {
     private final long answer;
 
     public Question(List<Integer> array) {
@@ -11,7 +13,8 @@ public class Question {
         answer = holder.getInversionsCount();
     }
 
-    public long getAnswer() {
+    @Override
+    public Long getAnswer() {
         return answer;
     }
 

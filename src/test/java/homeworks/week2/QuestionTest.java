@@ -1,5 +1,6 @@
 package homeworks.week2;
 
+import homeworks.Questionable;
 import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
@@ -20,19 +21,19 @@ public class QuestionTest {
 
     @Test
     public void testQuestion1() {
-        Question q = new Question1(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
-        assertEquals(25, q.getAnswer());
+        Questionable<Long> q = new Question1(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
+        assertEquals(25, (long)q.getAnswer());
     }
 
     @Test
     public void testQuestion2() {
-        Question q = new Question2(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
-        assertEquals(29, q.getAnswer());
+        Questionable<Long> q = new Question2(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
+        assertEquals(29, (long)q.getAnswer());
     }
 
     @Test
     public void testQuestion3() {
-        Question q = new Question3(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
-        assertEquals(21, q.getAnswer());
+        Questionable<Long> q = new Question3(new int[] {3, 9, 8, 4, 6, 10, 2, 5, 7, 1});
+        assertEquals(21, (long)q.getAnswer());
     }
 }

@@ -1,6 +1,8 @@
 package homeworks.week2;
 
-abstract class Question {
+import homeworks.Questionable;
+
+abstract class Question implements Questionable<Long> {
     private long count = 0;
 
     int[] array;
@@ -49,7 +51,8 @@ abstract class Question {
             quickSort(pivotIdx+1, right);
     }
 
-    long getAnswer() {
+    @Override
+    public Long getAnswer() {
         quickSort(0, array.length-1);
         return count;
     }
