@@ -3,6 +3,8 @@ package homeworks.week3;
 import homeworks.Questionable;
 import org.junit.Test;
 
+import java.io.IOException;
+
 import static org.junit.Assert.assertEquals;
 
 /**
@@ -11,7 +13,7 @@ import static org.junit.Assert.assertEquals;
 public class MinimumCutProblemTest {
     @Test
     public void testLectureQuestion() {
-        int[][] data = {{1, 2, 4}, {2, 1, 3, 4}, {3, 2, 4}, {4, 1, 2, 3}};
+        Integer[][] data = {{1, 2, 4}, {2, 1, 3, 4}, {3, 2, 4}, {4, 1, 2, 3}};
         GraphData graph = new GraphData(data);
         Questionable q = new MinimumCutProblem(graph);
         assertEquals(2, q.getAnswer());
@@ -19,7 +21,7 @@ public class MinimumCutProblemTest {
 
     @Test
     public void testForumQuestion1() {
-        int[][] data = {
+        Integer[][] data = {
             {1, 2, 3, 4, 7},
             {2, 1, 3, 4},
             {3, 1, 2, 4},
@@ -36,7 +38,7 @@ public class MinimumCutProblemTest {
 
     @Test
     public void testForumQuestion2() {
-        int[][] data = {
+        Integer[][] data = {
             {1, 2, 3, 4},
             {2, 1, 3, 4},
             {3, 1, 2, 4},
@@ -49,5 +51,13 @@ public class MinimumCutProblemTest {
         GraphData graph = new GraphData(data);
         Questionable q = new MinimumCutProblem(graph);
         assertEquals(1, q.getAnswer());
+    }
+
+    @Test
+    public void testForumQuestion3() throws IOException {
+        QuestionDataLoader qdl = new QuestionDataLoader("VikramJaiswalData.txt");
+        GraphData graph = new GraphData(qdl.getData());
+        Questionable q = new MinimumCutProblem(graph);
+        assertEquals(3, q.getAnswer());
     }
 }
