@@ -60,7 +60,7 @@ public class GraphData implements Cloneable {
             for (int i = 0; i < otherNodes.size(); i++) {
                 if (otherNodes.get(i).equals(firstNode)) {
                     otherNodes.set(i, secondNode);
-                    eList.add(otherNodes.get(i));
+                    eList.add(node);
                 }
             }
         }
