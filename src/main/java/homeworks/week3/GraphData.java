@@ -52,15 +52,16 @@ public class GraphData implements Cloneable {
         return eList.get(secondNodeIdx);
     }
 
+    // todo exclude parasite self-loops
     void mergeFirstToSecond(int firstNode, int secondNode) {
-        List<Integer> eList = edges.get(secondNode);
+        List<Integer> secondEList = edges.get(secondNode);
 
         for (Integer node: edges.get(firstNode)) {
             List<Integer> otherNodes = edges.get(node);
             for (int i = 0; i < otherNodes.size(); i++) {
                 if (otherNodes.get(i).equals(firstNode)) {
                     otherNodes.set(i, secondNode);
-                    eList.add(node);
+                    secondEList.add(node);
                 }
             }
         }
