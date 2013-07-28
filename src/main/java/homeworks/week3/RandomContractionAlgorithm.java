@@ -24,7 +24,7 @@ public class RandomContractionAlgorithm implements Questionable {
     }
 
     @Override
-    public long getAnswer() {
+    public int getAnswer() {
         int first = graph.getNode(0);
         return graph.getEdgesCount(first);
     }

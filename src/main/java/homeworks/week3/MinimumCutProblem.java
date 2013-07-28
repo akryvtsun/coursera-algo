@@ -4,23 +4,32 @@ import homeworks.Questionable;
 
 public class MinimumCutProblem implements Questionable {
     private final GraphData graph;
-    private final long countRuns;
-    private long minCutsAnswer = Long.MAX_VALUE;
+    private final int runsCount;
+    private int minCutsAnswer = Integer.MAX_VALUE;
 
     MinimumCutProblem(GraphData graph) {
-        this.graph = graph;
+        this(graph, -1);
+    }
 
-        long n = graph.getNotesCount();
+    MinimumCutProblem(GraphData graph, int runsCount) {
+        this.graph = graph;
+        this.runsCount = runsCount == -1
+            ? calcRunsCount(graph)
+            : runsCount;
+    }
+
+    private int calcRunsCount(GraphData graph) {
+        int n = graph.getNotesCount();
         double goodCount = Math.pow(n, 2) * Math.log(n);
-        countRuns = ((long)goodCount);
+        return ((int)goodCount);
     }
 
     @Override
-    public long getAnswer() {
-        for (int i = 0; i < countRuns; i++) {
+    public int getAnswer() {
+        for (int i = 0; i < runsCount; i++) {
             GraphData newGraph = new GraphData(graph);
             Questionable q = new RandomContractionAlgorithm(newGraph);
-            long answer = q.getAnswer();
+            int answer = q.getAnswer();
             if (answer < minCutsAnswer)
                 minCutsAnswer = answer;
         }
