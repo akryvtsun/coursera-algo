@@ -11,8 +11,9 @@ import static org.junit.Assert.assertEquals;
  * @see <a href="https://class.coursera.org/algo-004/forum/thread?thread_id=563">Test cases for programming assignment #3</a>
  */
 public class MinimumCutProblemTest {
+
     @Test
-    public void testLectureQuestion() {
+    public void testDemoLectureQuestion() {
         Integer[][] data = {{1, 2, 4}, {2, 1, 3, 4}, {3, 2, 4}, {4, 1, 2, 3}};
         GraphData graph = new GraphData(data);
         Questionable q = new MinimumCutProblem(graph);
@@ -54,10 +55,18 @@ public class MinimumCutProblemTest {
     }
 
     @Test
-    public void testForumQuestion3() throws IOException {
+    public void testForumQuestion3FromFile() throws IOException {
         QuestionDataLoader qdl = new QuestionDataLoader("VikramJaiswalData.txt");
         GraphData graph = new GraphData(qdl.getData());
         Questionable q = new MinimumCutProblem(graph);
         assertEquals(3, q.getAnswer());
+    }
+
+    @Test
+    public void testLectureQuestion() throws IOException {
+        QuestionDataLoader qdl = new QuestionDataLoader("kargerMinCut.txt");
+        GraphData graph = new GraphData(qdl.getData());
+        Questionable q = new MinimumCutProblem(graph);
+        assertEquals(17, q.getAnswer());
     }
 }
