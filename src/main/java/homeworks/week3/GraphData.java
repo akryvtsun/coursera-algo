@@ -3,43 +3,51 @@ package homeworks.week3;
 import java.util.*;
 
 public class GraphData implements Cloneable {
-    private final Map<Integer, List<Integer>> data = new HashMap<Integer, List<Integer>>();
+    private final List<Integer> nodes;
+    private final Map<Integer, List<Integer>> edges;
+
+    private GraphData() {
+        nodes = new ArrayList<Integer>();
+        edges = new HashMap<Integer, List<Integer>>();
+    }
 
     public GraphData(int[][] data) {
+        this();
         for (int i = 0; i < data.length; i++) {
-            List<Integer> edges = new LinkedList<Integer>();
+            int node = data[i][0];
+            nodes.add(node);
+
+            List<Integer> eList = new LinkedList<Integer>();
             for (int j = 1; j < data[i].length; j++) {
-                edges.add(data[i][j]);
+                eList.add(data[i][j]);
             }
-            this.data.put(data[i][0], edges);
+            edges.put(node, eList);
         }
     }
 
     public GraphData(GraphData graph) {
-        for (Map.Entry<Integer, List<Integer>> entry: graph.data.entrySet()) {
-            List<Integer> nodes = entry.getValue();
-            data.put(entry.getKey(), new LinkedList(nodes));
+        this();
+        for (Integer node: graph.nodes) {
+            nodes.add(node);
+            List<Integer> eList = graph.edges.get(node);
+            edges.put(node, new LinkedList(eList));
         }
     }
 
     int getFirstNode(int firstNodeIdx) {
-        int i = 0;
-        for (Map.Entry<Integer, List<Integer>> entry: data.entrySet()) {
-            if (i == firstNodeIdx)
-                return entry.getKey();
-            else
-                i++;
-        }
-        return -1;
+        return nodes.get(firstNodeIdx);
     }
 
+    // todo MAKE SELECTION RANDOM TOO!!!
     int getSecondNode(int firstNode) {
-        return data.get(firstNode).get(0);
+        return edges.get(firstNode).get(0);
     }
 
+    // todo rename method
+    // todo make backward links in correct way
     void changeFirstToSecond(int firstNode, int secondNode) {
-        for (Integer node: data.get(firstNode)) {
-            List<Integer> otherNode = data.get(node);
+        for (Integer node: edges.get(firstNode)) {
+            List<Integer> otherNode = edges.get(node);
             for (int i = 0; i < otherNode.size(); i++) {
                 if (otherNode.get(i).equals(firstNode)) {
                     otherNode.set(i, secondNode);
@@ -49,11 +57,12 @@ public class GraphData implements Cloneable {
     }
 
     void deleteNode(int node) {
-        data.remove(node);
+        nodes.remove(Integer.valueOf(node));
+        edges.remove(node);
     }
 
     void removeSelfLoops(int node) {
-        Iterator<Integer> nodes = data.get(node).iterator();
+        Iterator<Integer> nodes = edges.get(node).iterator();
         while (nodes.hasNext()) {
             Integer otherNode = nodes.next();
             if (otherNode.equals(node))
@@ -62,10 +71,10 @@ public class GraphData implements Cloneable {
     }
 
     int getEdgesCount(int node) {
-        return data.get(node).size();
+        return edges.get(node).size();
     }
 
     int getNotesCount() {
-        return data.size();
+        return edges.size();
     }
 }

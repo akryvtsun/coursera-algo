@@ -7,6 +7,7 @@ import java.util.Random;
 
 public class RandomContractionAlgorithm implements Questionable {
 
+    // todo MOVE RND into GraphData
     private static Random RND = new Random();
     private GraphData graph;
 

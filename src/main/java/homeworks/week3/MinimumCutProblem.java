@@ -20,8 +20,9 @@ public class MinimumCutProblem implements Questionable {
         for (int i = 0; i < countRuns; i++) {
             GraphData newGraph = new GraphData(graph);
             Questionable q = new RandomContractionAlgorithm(newGraph);
-            if (q.getAnswer() < minCutsAnswer)
-                minCutsAnswer = q.getAnswer();
+            long answer = q.getAnswer();
+            if (answer < minCutsAnswer)
+                minCutsAnswer = answer;
         }
         return minCutsAnswer;
     }
