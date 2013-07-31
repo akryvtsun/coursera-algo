@@ -1,5 +1,6 @@
 package homeworks.week1;
 
+import homeworks.QuestionDataLoader;
 import homeworks.Questionable;
 import org.junit.Test;
 
@@ -86,24 +87,10 @@ public class QuestionTest {
 
     @Test
     public void testMainQuestion() throws IOException {
-        InputStream is = Question.class.getResourceAsStream("IntegerArray.txt");
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        QuestionDataLoader<Integer> qdl = new DataLoader("IntegerArray.txt");
+        assertEquals(100000, qdl.getData().size());
 
-        List<Integer> array = new ArrayList<Integer>();
-        int count = 0;
-        while (true) {
-            String strLine = br.readLine();
-            if (strLine == null)
-                break;
-            array.add(Integer.parseInt(strLine));
-            count++;
-        };
-        assertEquals(100000, count);
-
-        br.close();
-        is.close();
-
-        Question q = new Question(array);
+        Questionable<Long> q = new Question(qdl.getData());
         assertEquals(2407905288L, (long)q.getAnswer());
     }
 }
