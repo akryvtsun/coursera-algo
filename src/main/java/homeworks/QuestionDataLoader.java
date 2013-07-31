@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ *
+ */
 public abstract class QuestionDataLoader<T> {
     private final InputStream is;
     private List<T> data;

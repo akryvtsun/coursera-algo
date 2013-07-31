@@ -1,9 +1,12 @@
 package homeworks.week3;
 
+import homeworks.QuestionDataLoader;
+
 import homeworks.Questionable;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -56,16 +59,22 @@ public class MinimumCutProblemTest {
 
     @Test
     public void testDemoForumQuestion3FromFile() throws IOException {
-        QuestionDataLoader qdl = new QuestionDataLoader("VikramJaiswalData.txt");
-        GraphData graph = new GraphData(qdl.getData());
+        QuestionDataLoader<Integer[]> qdl = new DataLoader("VikramJaiswalData.txt");
+        List<Integer[]> rawData = qdl.getData();
+        Integer[][] data = rawData.toArray(new Integer[rawData.size()][]);
+
+        GraphData graph = new GraphData(data);
         Questionable q = new MinimumCutProblem(graph);
         assertEquals(3, q.getAnswer());
     }
 
     @Test
     public void testLectureQuestion() throws IOException {
-        QuestionDataLoader qdl = new QuestionDataLoader("kargerMinCut.txt");
-        GraphData graph = new GraphData(qdl.getData());
+        QuestionDataLoader<Integer[]> qdl = new DataLoader("kargerMinCut.txt");
+        List<Integer[]> rawData = qdl.getData();
+        Integer[][] data = rawData.toArray(new Integer[rawData.size()][]);
+                ;
+        GraphData graph = new GraphData(data);
         Questionable q = new MinimumCutProblem(graph, 100);
         assertEquals(17, q.getAnswer());
     }
